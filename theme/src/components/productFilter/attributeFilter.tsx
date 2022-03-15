@@ -1,4 +1,6 @@
 import React from "react"
+import { NavLink } from "react-router-dom"
+import { themeSettings, text } from "../../lib/settings"
 
 class AttributeValue extends React.Component {
   constructor(props) {
@@ -21,9 +23,9 @@ class AttributeValue extends React.Component {
       setFilterAttribute,
       unsetFilterAttribute,
     } = this.props
-    const checked = event.target.checked
+    const { checked } = event.target
 
-    this.setState({ checked: checked })
+    this.setState({ checked })
 
     if (checked) {
       setFilterAttribute(attributeName, valueName)
@@ -39,14 +41,16 @@ class AttributeValue extends React.Component {
     const classDisabled = isDisabled ? "attribute-disabled" : ""
 
     return (
-      <label className={classChecked + " " + classDisabled}>
+      <label
+        className={`filter__input filter__input_checkbox ${classChecked} ${classDisabled}`}
+      >
+        {valueName} ({count})
         <input
           type="checkbox"
           disabled={isDisabled}
           onChange={this.onChange}
           checked={this.state.checked}
         />
-        {valueName}
       </label>
     )
   }
@@ -71,7 +75,7 @@ const AttributeSet = ({
 
   return (
     <div className="attribute">
-      <div className="attribute-title">{attribute.name}</div>
+      <div className="attribute__title">{attribute.name}</div>
       {values}
     </div>
   )

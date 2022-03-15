@@ -1,9 +1,9 @@
-import PropTypes from "prop-types"
 import React from "react"
+import PropTypes from "prop-types"
 import api from "../../lib/api"
 import ProductList from "../productList"
 
-class CustomProducts extends React.Component {
+export default class CustomProducts extends React.Component {
   static propTypes = {
     ids: PropTypes.oneOfType([
       PropTypes.string,
@@ -93,7 +93,7 @@ class CustomProducts extends React.Component {
       price_to,
       sort,
       fields:
-        "path,id,name,category_id,category_name,sku,images,enabled,discontinued,stock_status,stock_quantity,price,on_sale,regular_price,attributes,tags",
+        "path,id,name,category_id,category_name,sku,images,enabled,discontinued,stock_status,stock_quantity,price,on_sale,regular_price,attributes,tags,variants",
       limit: limit || 4,
       offset: 0,
     }
@@ -149,5 +149,3 @@ class CustomProducts extends React.Component {
     )
   }
 }
-
-export default CustomProducts

@@ -1,4 +1,6 @@
 import React, { Fragment } from "react"
+import { themeSettings, text } from "../lib/settings"
+import MetaTags from "../components/metaTags"
 import ResetPassword from "../components/resetPassword/index"
 
 const ResetPasswordContainer = props => {
@@ -8,13 +10,7 @@ const ResetPasswordContainer = props => {
 
   return (
     <Fragment>
-      <section className="section">
-        <div className="container">
-          <div className="content">
-            <ResetPassword {...props} />
-          </div>
-        </div>
-      </section>
+      <ResetPassword {...props} />
     </Fragment>
   )
 }

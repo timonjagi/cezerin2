@@ -1,7 +1,8 @@
 import React from "react"
-import { text, themeSettings } from "../../lib/settings"
+import { NavLink } from "react-router-dom"
+import { themeSettings, text } from "../../lib/settings"
 
-class SearchBox extends React.Component {
+export default class SearchBox extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -53,12 +54,12 @@ class SearchBox extends React.Component {
 
     return (
       <div
-        className={
-          "search-box " + this.props.className + (hasFocus ? " has-focus" : "")
-        }
+        className={`naviigation__search search-box ${this.props.className}${
+          hasFocus ? " has-focus" : ""
+        }`}
       >
         <input
-          className="search-input"
+          className="search-input textfield textfield_search"
           type="text"
           placeholder={placeholderText}
           value={this.state.value}
@@ -68,23 +69,24 @@ class SearchBox extends React.Component {
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
         />
-        <img
-          className="search-icon-search"
-          src="/assets/images/search.svg"
-          alt={text.search}
+
+        <button
+          type="button"
+          className="button button_search"
           title={text.search}
           onClick={this.handleSearch}
-        />
+        >
+          {text.search}
+        </button>
         {this.state.value && this.state.value !== "" && (
           <img
             className="search-icon-clear"
             src="/assets/images/close.svg"
             onClick={this.handleClear}
+            width="10"
           />
         )}
       </div>
     )
   }
 }
-
-export default SearchBox

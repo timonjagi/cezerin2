@@ -1,7 +1,7 @@
 {
-  "checkoutInputClass": "checkout-field",
-  "checkoutButtonClass": "checkout-button button is-primary",
-  "checkoutEditButtonClass": "checkout-button button",
+  "checkoutInputClass": "checkout__field",
+  "checkoutButtonClass": "checkout__button button",
+  "checkoutEditButtonClass": "checkout__button button",
   "cartThumbnailWidth": 100,
   "footer_contacts": [
     { "text": "104 N Stagecoach Rd" },
@@ -9,27 +9,28 @@
     { "text": "(207) 564-8482" },
     { "text": "sales@shop.com" }
   ],
-  "footer_about": "Store - just to show you what it can. Some text go here. Some text go here. Some text go here. Some text go here. Some text go here. Some text go here. Some text go here.",
+  "footer_about": "Store - just to show you what it can. Some text go here.",
   "footer_menu_2_title": "Customer service",
   "footer_menu_1_title": "Company",
   "footer_social": [
-    { "type": "facebook", "url": "https://www.facebook.com/" },
-    { "type": "twitter", "url": "https://twitter.com/" }
+    { "type": "facebook", "url": "https://facebook.com/cezerin" },
+    { "type": "twitter", "url": "https://twitter.com/cezerin2" }
   ],
   "footer_menu_1_items": [
     { "text": "About", "url": "/about" },
     { "text": "Blog", "url": "/blog" },
     { "text": "Terms of Service", "url": "/tos" },
-    { "text": "Privacy Policy", "url": "/privacy-policy" }
+    { "text": "Privacy Policy", "url": "/privacy-policy" },
+    { "text": "Made with ❤ by Cezerin.org", "url": "" }
   ],
   "footer_menu_2_items": [
-    { "text": "Shipping & returns", "url": "/" },
-    { "text": "Conditions of Use", "url": "/" },
-    { "text": "Sitemap", "url": "/" }
+    { "text": "Shipping & returns", "url": "/returns" },
+    { "text": "About", "url": "/about" },
+    { "text": "Contacts", "url": "/contacts" }
   ],
   "search_placeholder": "",
   "home_products_limit": 8,
-  "home_products_title": "BEST SELLERS",
+  "home_products_title": "Featured Products",
   "home_products_sort": "-date_updated",
   "home_slider": [
     {
@@ -40,14 +41,14 @@
     },
     {
       "path": "/page-2",
-      "image": "slide9.jpg",
-      "title": "API Centric Progressive Web Application",
+      "image": "slide8.jpg",
+      "title": "API Centric PWA/SPA Shopping Cart",
       "description": "Headless eCommerce CMS."
     },
     {
-      "image": "slide7.jpg",
+      "image": "slide8.jpg",
       "path": "/page-3",
-      "title": "100% JavaScript. MERN Technology Stack",
+      "title": "100% JS. MERN Technology Stack",
       "description": "MongoDB + ExpressJS + ReactJS + NodeJS"
     }
   ],
@@ -71,6 +72,5 @@
   "show_viewed_products": true,
   "product_gallery_shownav": true,
   "page_list_tag": "blog",
-  "home_gallery_shownav": true,
-  "hide_footer_on_checkout": true
+  "home_gallery_shownav": true
 }

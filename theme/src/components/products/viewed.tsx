@@ -1,14 +1,14 @@
-import PropTypes from "prop-types"
 import React from "react"
+import PropTypes from "prop-types"
 import { text } from "../../lib/settings"
 import CustomProductList from "./custom"
+import GalleryProducts from "./gallery"
 
-class ViewedProducts extends React.Component {
+export default class ViewedProducts extends React.Component {
   static propTypes = {
     limit: PropTypes.number.isRequired,
     settings: PropTypes.shape({}).isRequired,
     addCartItem: PropTypes.func.isRequired,
-    product: PropTypes.shape({}).isRequired,
   }
 
   state = {
@@ -85,24 +85,20 @@ class ViewedProducts extends React.Component {
     if (viewedProducts && viewedProducts.length > 0) {
       const ids = viewedProducts.reverse().slice(0, limit)
       return (
-        <section className="section section-product-related">
-          <div className="container">
-            <div className="title is-4 has-text-centered">
-              {text.recentlyViewed}
-            </div>
-            <CustomProductList
-              ids={ids}
-              settings={settings}
-              addCartItem={addCartItem}
-              limit={limit}
-              isCentered
-            />
+        <section className="viewed section-container">
+          <div className="viewed__title section__title">
+            {text.recentlyViewed}
           </div>
+          <GalleryProducts
+            ids={ids}
+            settings={settings}
+            addCartItem={addCartItem}
+            limit={limit}
+            isCentered
+          />
         </section>
       )
     }
     return null
   }
 }
-
-export default ViewedProducts

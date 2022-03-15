@@ -1,11 +1,11 @@
-import Lscache from "lscache"
 import React from "react"
 import { Redirect } from "react-router-dom"
-import { themeSettings } from "../../lib/settings"
-import { encodeUserPassword } from "../authHeader"
+import Lscache from "lscache"
+import { themeSettings, text } from "../../lib/settings"
+import AuthHeader from "../authHeader"
 import Account from "./account"
 
-class AccountForm extends React.Component {
+export default class AccountForm extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -22,7 +22,7 @@ class AccountForm extends React.Component {
       first_name: values.first_name,
       last_name: values.last_name,
       email: values.email,
-      password: encodeUserPassword(values.password),
+      password: AuthHeader.encodeUserPassword(values.password),
       token: Lscache.get("auth_data"),
       shipping_address,
       billing_address,
@@ -63,6 +63,7 @@ class AccountForm extends React.Component {
       const cacheTimeStamp = localStorage.getItem(
         "lscache-auth_data-cacheexpiration"
       )
+
       if (Number(cacheTimeStamp) <= Math.floor(new Date().getTime() / 1000)) {
         Lscache.flush()
         return (
@@ -75,9 +76,9 @@ class AccountForm extends React.Component {
       }
 
       const {
-        checkoutInputClass = "checkout-field",
-        checkoutButtonClass = "checkout-button",
-        checkoutEditButtonClass = "checkout-button-edit",
+        checkoutInputClass = "checkout__field input__text-field",
+        checkoutButtonClass = "checkout__button button",
+        checkoutEditButtonClass = "checkout__button_edit button",
       } = themeSettings
 
       return (
@@ -98,5 +99,3 @@ class AccountForm extends React.Component {
     }
   }
 }
-
-export default AccountForm

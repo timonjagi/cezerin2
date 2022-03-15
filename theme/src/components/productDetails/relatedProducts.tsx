@@ -1,8 +1,8 @@
-import React from "react"
-import { text, themeSettings } from "../../lib/settings"
-import CustomProducts from "../products/custom"
+import React, { Fragment } from "react"
+import { themeSettings, text } from "../../lib/settings"
+import GalleryProducts from "../products/gallery"
 
-class RelatedProducts extends React.PureComponent {
+export default class RelatedProducts extends React.PureComponent {
   render() {
     const { ids, settings, addCartItem, limit } = this.props
     if (ids && ids.length > 0) {
@@ -13,24 +13,18 @@ class RelatedProducts extends React.PureComponent {
           : text.relatedProducts
 
       return (
-        <section className="section section-product-related">
-          <div className="container">
-            <div className="title is-4 has-text-centered">{title}</div>
-            <CustomProducts
-              ids={ids}
-              sort={null}
-              limit={limit}
-              isCentered={true}
-              settings={settings}
-              addCartItem={addCartItem}
-            />
-          </div>
+        <section className="viewed_related viewed section-container">
+          <div className="viewed__title section__title">{title}</div>
+          <GalleryProducts
+            ids={ids}
+            settings={settings}
+            addCartItem={addCartItem}
+            limit={limit}
+            isCentered
+          />
         </section>
       )
-    } else {
-      return null
     }
+    return null
   }
 }
-
-export default RelatedProducts

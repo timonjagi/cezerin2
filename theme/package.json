@@ -1,14 +1,18 @@
 {
   "name": "theme",
   "version": "1.0.0",
-  "description": "Default theme for cezerin.",
+  "description": "",
   "main": "dist/index.js",
+  "author": "",
   "license": "MIT",
   "dependencies": {
     "bulma": "^0.6.2",
     "rc-slider": "^8.6.1",
     "react-image-gallery": "^0.8.7",
     "react-image-lightbox": "^4.6.0",
-    "react-lazyload": "^2.3.0"
+    "react-lazyload": "^2.3.0",
+    "react-input-mask": "^3.0.0-alpha.2",
+    "react-slick": "^0.25.2",
+    "react-yandex-maps": "^4.2.0"
   }
 }

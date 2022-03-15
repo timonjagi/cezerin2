@@ -2,7 +2,7 @@ import React from "react"
 import api from "../../lib/api"
 import PageList from "./list"
 
-class CustomPageList extends React.Component {
+export default class CustomPageList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -20,8 +20,8 @@ class CustomPageList extends React.Component {
 
   fetchData = ({ tags, sort }) => {
     const filter = {
-      tags: tags,
-      sort: sort,
+      tags,
+      sort,
     }
 
     api.ajax.pages.list(filter).then(({ status, json }) => {
@@ -36,5 +36,3 @@ class CustomPageList extends React.Component {
     return <PageList pages={pages} />
   }
 }
-
-export default CustomPageList

@@ -1,9 +1,10 @@
 import React from "react"
-import { themeSettings } from "../../lib/settings"
-import { encodeUserPassword } from "../authHeader"
+import AuthHeader from "../authHeader"
+import { Redirect } from "react-router-dom"
+import { themeSettings, text } from "../../lib/settings"
 import Register from "./register"
 
-class RegisterForm extends React.Component {
+export default class RegisterForm extends React.Component {
   constructor(props) {
     super(props)
 
@@ -17,7 +18,7 @@ class RegisterForm extends React.Component {
       first_name: values.first_name,
       last_name: values.last_name,
       email: values.email,
-      password: encodeUserPassword(values.password),
+      password: AuthHeader.encodeUserPassword(values.password),
       history: this.props.history,
     })
   }
@@ -40,9 +41,9 @@ class RegisterForm extends React.Component {
     }
 
     const {
-      checkoutInputClass = "checkout-field",
-      checkoutButtonClass = "checkout-button",
-      checkoutEditButtonClass = "checkout-button-edit",
+      checkoutInputClass = "checkout__field",
+      checkoutButtonClass = "checkout__button button",
+      checkoutEditButtonClass = "checkout__button_edit button",
     } = themeSettings
 
     return (
@@ -57,5 +58,3 @@ class RegisterForm extends React.Component {
     )
   }
 }
-
-export default RegisterForm

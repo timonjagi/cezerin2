@@ -1,4 +1,6 @@
 import React, { Fragment } from "react"
+import { themeSettings, text } from "../lib/settings"
+import MetaTags from "../components/metaTags"
 import Account from "../components/account/index"
 
 const AccountContainer = props => {
@@ -8,12 +10,8 @@ const AccountContainer = props => {
 
   return (
     <Fragment>
-      <section className="section">
-        <div className="container">
-          <div className="content">
-            <Account {...props} />
-          </div>
-        </div>
+      <section className="section section-container">
+        <Account {...props} />
       </section>
     </Fragment>
   )

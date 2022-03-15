@@ -6,5 +6,10 @@ const jwtSecretKey = "-"
 const cert = jwtSecretKey
 // const cert = serverConfigs.jwtSecretKey
 
-export const encodeUserPassword = (token: string) =>
-  jwt.sign({ password: token }, cert)
+class AuthHeader {
+  encodeUserPassword(token) {
+    return jwt.sign({ password: token }, cert)
+  }
+}
+
+export default new AuthHeader()

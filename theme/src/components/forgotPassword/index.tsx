@@ -1,8 +1,8 @@
 import React from "react"
-import { themeSettings } from "../../lib/settings"
+import { themeSettings, text } from "../../lib/settings"
 import ForgotPassword from "./forgotPassword"
 
-class ForgotPasswordForm extends React.Component {
+export default class ForgotPasswordForm extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -18,8 +18,8 @@ class ForgotPasswordForm extends React.Component {
     const { settings, forgotPasswordProperties } = this.props.state
 
     const {
-      checkoutInputClass = "checkout-field",
-      checkoutButtonClass = "checkout-button",
+      checkoutInputClass = "checkout__field input__text-field",
+      checkoutButtonClass = "checkout__button button",
     } = themeSettings
 
     return (
@@ -35,5 +35,3 @@ class ForgotPasswordForm extends React.Component {
     )
   }
 }
-
-export default ForgotPasswordForm

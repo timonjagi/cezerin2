@@ -1,10 +1,11 @@
 import React, { Fragment } from "react"
+import { NavLink } from "react-router-dom"
 import ImageGallery from "react-image-gallery"
 import Lightbox from "react-image-lightbox"
 import * as helper from "../../lib/helper"
-import { themeSettings } from "../../lib/settings"
+import { themeSettings, text } from "../../lib/settings"
 
-class Gallery extends React.Component {
+export default class Gallery extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -46,22 +47,26 @@ class Gallery extends React.Component {
       const originalImages = images.map(image => image.url)
       const showThumbnails = images.length > 1
 
+      const renderItem = item => (
+        <div
+          className="image-gallery-image"
+          style={{ backgroundImage: `url(${item.original})` }}
+        />
+      )
+
       return (
-        <Fragment>
+        <div className="product__image">
           <ImageGallery
             items={imagesArray}
-            showThumbnails={showThumbnails}
+            showThumbnails={false}
             onClick={this.openLightbox}
-            lazyLoad={true}
+            lazyLoad
             slideInterval={2000}
             showNav={themeSettings.product_gallery_shownav === true}
             showBullets={showThumbnails}
             showPlayButton={false}
             showFullscreenButton={false}
-            slideOnThumbnailHover={true}
-            thumbnailPosition={themeSettings.product_thumbnail_position}
-            onSlide={this.setPhotoIndex}
-            startIndex={lightboxPhotoIndex}
+            renderItem={renderItem}
           />
           {lightboxIsOpen && (
             <Lightbox
@@ -92,12 +97,9 @@ class Gallery extends React.Component {
               }
             />
           )}
-        </Fragment>
+        </div>
       )
-    } else {
-      return <div className="large-image-placeholder" />
     }
+    return <div className="large-image-placeholder" />
   }
 }
-
-export default Gallery

@@ -1,6 +1,6 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import { themeSettings } from "../../lib/settings"
+import { themeSettings, text } from "../../lib/settings"
 
 class HeadMenuItem extends React.Component {
   constructor(props) {
@@ -53,7 +53,6 @@ class HeadMenuItem extends React.Component {
         onMouseLeave={this.onMouseLeaveHandler}
         onMouseUp={this.onMouseLeaveHandler}
         className={
-          (level === 2 ? "column is-3" : "") +
           (this.state.isActive ? " is-active" : "") +
           (hasItems ? " has-items" : "")
         }
@@ -71,11 +70,9 @@ class HeadMenuItem extends React.Component {
         </div>
         {hasItems && (
           <ul
-            className={
-              (level === 1 ? "columns is-gapless is-multiline" : "") +
-              " nav-level-" +
-              level
-            }
+            className={`${
+              level === 1 ? "is-gapless is-multiline" : ""
+            } nav-level-${level}`}
           >
             {items}
           </ul>
@@ -85,7 +82,7 @@ class HeadMenuItem extends React.Component {
   }
 }
 
-class HeadMenu extends React.PureComponent {
+export default class HeadMenu extends React.PureComponent {
   render() {
     const { categories, onClick, isMobile } = this.props
     let addItemsToMenu = []
@@ -115,5 +112,3 @@ class HeadMenu extends React.PureComponent {
     return <ul className="nav-level-0">{items}</ul>
   }
 }
-
-export default HeadMenu

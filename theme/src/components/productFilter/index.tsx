@@ -1,10 +1,12 @@
-import React from "react"
-import { text } from "../../lib/settings"
-import Sort from "../sort"
-import AttributeFilter from "./attributeFilter"
-import PriceSlider from "./priceSlider"
+import React, { Fragment } from "react"
+import { NavLink } from "react-router-dom"
+import { themeSettings, text } from "../../lib/settings"
 
-class ProductFilter extends React.Component {
+import Sort from "../sort"
+import PriceSlider from "./priceSlider"
+import AttributeFilter from "./attributeFilter"
+
+export default class ProductFilter extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -16,12 +18,12 @@ class ProductFilter extends React.Component {
     this.setState({
       sidebarIsActive: !this.state.sidebarIsActive,
     })
-    document.body.classList.toggle("sidebar-active")
+    document.body.classList.toggle("noscroll")
   }
 
   sidebarClose = () => {
     this.setState({ sidebarIsActive: false })
-    document.body.classList.remove("sidebar-active")
+    document.body.classList.remove("noscroll")
   }
 
   render() {
@@ -37,58 +39,59 @@ class ProductFilter extends React.Component {
     } = this.props.state
 
     return (
-      <div>
-        <div className="is-hidden-tablet">
-          <button className="button is-fullwidth" onClick={this.sidebarToggle}>
+      <Fragment>
+        <div className="category__sort sort">
+          <Sort
+            defaultSort={settings.default_product_sorting}
+            currentSort={productFilter.sort}
+            setSort={this.props.setSort}
+          />
+          <button
+            type="button"
+            className="filter__button button button_filter is-hidden-tablet"
+            onClick={this.sidebarToggle}
+          >
             {text.filterProducts}
           </button>
         </div>
 
-        <div
-          className={sidebarIsActive ? "modal is-active" : "is-hidden-mobile"}
-          style={{ zIndex: 101 }}
-        >
-          <div
-            className={sidebarIsActive ? "dark-overflow" : ""}
-            onClick={this.sidebarClose}
-          />
-          <div className={sidebarIsActive ? "modal-content" : ""}>
-            <div className={sidebarIsActive ? "box sidebar" : ""}>
-              <div className="is-hidden-tablet" style={{ marginBottom: 30 }}>
-                <Sort
-                  defaultSort={settings.default_product_sorting}
-                  currentSort={productFilter.sort}
-                  setSort={this.props.setSort}
-                />
-              </div>
+        <div className="category__filter ">
+          <div className={sidebarIsActive ? "filter filter-open" : "filter"}>
+            <button
+              type="button"
+              className="modal-close is-hidden-tablet"
+              onClick={this.sidebarClose}
+            >
+              <svg className="icon" width="28">
+                <use xlinkHref="#close" />
+              </svg>
+            </button>
+            <h2 className="filter__title is-hidden-tablet">Filter</h2>
+            <AttributeFilter
+              attributes={productsAttributes}
+              setFilterAttribute={this.props.setFilterAttribute}
+              unsetFilterAttribute={this.props.unsetFilterAttribute}
+            />
 
-              <AttributeFilter
-                attributes={productsAttributes}
-                setFilterAttribute={this.props.setFilterAttribute}
-                unsetFilterAttribute={this.props.unsetFilterAttribute}
-              />
+            <PriceSlider
+              minPrice={productsMinPrice}
+              maxPrice={productsMaxPrice}
+              minValue={productFilter.priceFrom}
+              maxValue={productFilter.priceTo}
+              setPriceFromAndTo={this.props.setPriceFromAndTo}
+              settings={settings}
+            />
 
-              <PriceSlider
-                minPrice={productsMinPrice}
-                maxPrice={productsMaxPrice}
-                minValue={productFilter.priceFrom}
-                maxValue={productFilter.priceTo}
-                setPriceFromAndTo={this.props.setPriceFromAndTo}
-                settings={settings}
-              />
-
-              <button
-                className="button is-fullwidth is-dark is-hidden-tablet"
-                onClick={this.sidebarClose}
-              >
-                {text.close}
-              </button>
-            </div>
+            <button
+              type="button"
+              className="filter__submit button is-hidden-tablet"
+              onClick={this.sidebarClose}
+            >
+              Apply
+            </button>
           </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }
-
-export default ProductFilter

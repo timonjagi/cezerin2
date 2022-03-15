@@ -1,33 +1,23 @@
 import React from "react"
-import { text } from "../../lib/settings"
+import { NavLink } from "react-router-dom"
+import { themeSettings, text } from "../../lib/settings"
 
 const LoginIcon = () => {
   return (
-    <img
-      src="/assets/images/login.svg"
-      className="login-icon"
-      alt={text.login}
-      title={text.login}
-      style={{
-        marginTop: 12 + "px",
-        minWidth: 32 + "px",
-        minHeight: 29 + "px",
-        maxWidth: 44 + "px",
-        maxHeight: 28 + "px",
-      }}
-    />
+    <span className="login-icon">
+      <img src="/assets/images/login.svg" alt={text.login} title={text.login} />
+    </span>
   )
 }
 
-class Login extends React.PureComponent {
+export default class Login extends React.PureComponent {
   render() {
-    const { login, onClick } = this.props
+    const { login, onClick, className } = this.props
+
     return (
-      <span className="login-button" onClick={onClick}>
-        <LoginIcon />
+      <span className={className} onClick={onClick}>
+        <LoginIcon /> {text.login}
       </span>
     )
   }
 }
-
-export default Login

@@ -1,10 +1,10 @@
 import React from "react"
 import api from "../../../lib/api"
-import LiqPay from "./LiqPay"
 import PayPalCheckout from "./PayPalCheckout"
+import LiqPay from "./LiqPay"
 import StripeElements from "./StripeElements"
 
-class PaymentForm extends React.Component {
+export default class PaymentForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -107,5 +107,3 @@ class PaymentForm extends React.Component {
     }
   }
 }
-
-export default PaymentForm

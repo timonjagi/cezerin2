@@ -1,11 +1,11 @@
 import React from "react"
-import { text, themeSettings } from "../../lib/settings"
+import { themeSettings, text } from "../../lib/settings"
 
 const LoadMore = ({
   loadMoreProducts,
   hasMore,
   loading,
-  className = "button is-fullwidth is-dark",
+  className = "button button_loadmore",
 }) => {
   if (hasMore) {
     const buttonStyle = {}
@@ -30,6 +30,7 @@ const LoadMore = ({
 
     return (
       <button
+        type="button"
         onClick={loadMoreProducts}
         className={className + (loading ? " is-loading" : "")}
         style={buttonStyle}

@@ -1,8 +1,8 @@
-import PropTypes from "prop-types"
 import React, { Fragment } from "react"
-import Footer from "../components/footer"
-import Header from "../components/header"
+import PropTypes from "prop-types"
 import { themeSettings } from "../lib/settings"
+import Header from "../components/header"
+import Footer from "../components/footer"
 
 const SharedContainer = props => {
   const {
@@ -17,7 +17,6 @@ const SharedContainer = props => {
   return (
     <Fragment>
       <Header {...props} />
-
       {children}
       {!hideFooter && <Footer settings={settings} />}
     </Fragment>
